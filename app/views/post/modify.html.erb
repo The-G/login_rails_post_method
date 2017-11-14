@@ -1,0 +1,8 @@
+<h1>Post#modify</h1>
+
+<form action="/post/update/<%=@post.id%>">
+    title : <input type="text" name="title" value="<%=@post.title%>"/><br>
+    content : <input type="text" name="content" value="<%=@post.content%>"/><br>
+    <input type="submit" value="submit" /><br>
+</form>
+<a href="/">home</a>

@@ -1,0 +1,29 @@
+<h1>User#login</h1>
+
+<%= flash[:notice] %>
+
+
+<form action="/user/login_process" method="post">
+    email : <input type="email" name="email"/><br>
+    password : <input type="password" name="password"/><br>
+    <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token()%>"/>
+    <input type="submit" value="submit" /><br>
+</form>
+<a href="/">home</a>
+
+
+<%= form_tag do %>
+  Form contents
+<% end %>
+
+<!--
+<%#= form_tag do %>
+  Form contents
+<%# end %>
+same with upper code
+<form accept-charset="UTF-8" action="/" method="post">
+  <input name="utf8" type="hidden" value="&#x2713;" />
+  <input name="authenticity_token" type="hidden" value="J7CBxfHalt49OSHp27hblqK20c9PgwJ108nDHX/8Cts=" />
+  Form contents
+</form>
+-->

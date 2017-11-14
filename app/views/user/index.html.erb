@@ -1,0 +1,11 @@
+<h1>User#index</h1>
+
+<a href="/post/new">작성하기</a><br>
+<a href="/user/new">가입하기</a><br>
+<a href="/post/index">모든 포스트 확인</a><br>
+
+<%@user.each do |user|%>
+    email : <%=user.email%>
+    password : <%=user.password%>
+    <a href="/user/show/<%=user.id%>">show</a> <br>
+<%end%>

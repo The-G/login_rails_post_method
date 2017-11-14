@@ -1,0 +1,38 @@
+<h1>Post#index</h1>
+
+<% if session[:user_id] %>
+    <a href="/post/new">작성하기</a><br>
+    <a href="/user/index">모든 유저 확인</a><br>
+    <a href="/user/logout">로그아웃</a><br>
+<% else %>
+    <a href="/user/new">가입하기</a><br>
+    <a href="/user/login">로그인</a><br>
+<% end %>
+
+<br>
+
+<h1><%= flash[:notice] %></h1>
+
+<br>
+
+<table>
+    <th>글번호</th>
+    <th>작성자</th>
+    <th>제목</th>
+    <th>SHOW</th>
+    <th>MODIFY</th>
+    <th>DESTROY</th>
+    <tbody>
+        <%@post.each do |post|%>
+            <tr>
+                <td><%=post.id%></td>
+                <td><%=post.user.email%></td>
+                <td><%=post.title%></td>
+                <td><a href="/post/show/<%=post.id%>">show</a></td>
+                <td><a href="/post/modify/<%=post.id%>">modify</a></td>
+                <td><a href="/post/destroy/<%=post.id%>">destroy</a></td>
+            </tr>
+        <%end%>
+    </tbody>
+</table>
+
