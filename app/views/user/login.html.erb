@@ -1,29 +1,45 @@
 <h1>User#login</h1>
 
-<%= flash[:notice] %>
-
-
+<%= render 'layouts/flash' %>
+<!--
 <form action="/user/login_process" method="post">
     email : <input type="email" name="email"/><br>
     password : <input type="password" name="password"/><br>
-    <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token()%>"/>
+    <input type="hidden" name="authenticity_token" value="<%#=form_authenticity_token()%>"/>
     <input type="submit" value="submit" /><br>
 </form>
-<a href="/">home</a>
-
-
-<%= form_tag do %>
-  Form contents
-<% end %>
-
-<!--
-<%#= form_tag do %>
-  Form contents
-<%# end %>
-same with upper code
-<form accept-charset="UTF-8" action="/" method="post">
-  <input name="utf8" type="hidden" value="&#x2713;" />
-  <input name="authenticity_token" type="hidden" value="J7CBxfHalt49OSHp27hblqK20c9PgwJ108nDHX/8Cts=" />
-  Form contents
-</form>
 -->
+<div class="row">
+  <div class="col-md-3 col-xs-0"></div>
+  <div class="col-md-6 col-xs-12">
+    <%#= form_tag("/user/login_process", method: "post") do %>
+      <%#= label_tag(:email, "email :") %>
+      <%#= text_field_tag(:email) %><!--<br>-->
+      <%#= label_tag(:content, "password :") %>
+      <%#= password_field_tag(:password) %><!--<br>-->
+      <%#= submit_tag("submit") %>
+    <%# end %>
+ 
+  <form action="/user/login_process" method="post">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    </div>
+    <div class="form-check">
+      <label class="form-check-label">
+        <input type="checkbox" class="form-check-input">
+        Check me out
+      </label>
+    </div>
+    <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token()%>"/>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form> 
+
+  </div>
+  <div class="col-md-3 col-xs-0"></div>
+</div>

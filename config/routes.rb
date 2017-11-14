@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root 'post#index'
   get 'user/index'
   get 'user/new'
@@ -10,13 +11,14 @@ Rails.application.routes.draw do
   
   get 'post/index'
   get 'post/new'
-  get 'post/create'
+  post 'post/create'
   get 'post/show/:id' => 'post#show'
   get 'post/destroy/:id' => 'post#destroy'
   get 'post/modify/:id' => 'post#modify'
-  get 'post/update/:id' => 'post#update'
-  get 'post/create_comment' 
+  post 'post/update/:id' => 'post#update'
+  post 'post/create_comment' 
   
+  resources :blogs
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

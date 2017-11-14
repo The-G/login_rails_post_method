@@ -1,8 +1,30 @@
 <h1>Post#new</h1>
-
-<form action="/post/create">
-    title : <input type="text" name="title"/><br>
-    content : <input type="text" name="content"/><br>
-    <input type="submit" value="submit" /><br>
+<!--
+<form action="/post/create" method="post">
+  title : <input type="text" name="title"/><br>
+  content : <input type="text" name="content"/><br>
+  <input type="hidden" name="authenticity_token" value="<%#=form_authenticity_token()%>" />
+  <input type="submit" value="submit" /><br>
 </form>
+-->
+<%= form_tag("/post/create", method: "post") do %>
+  <%= label_tag(:title, "title :") %>
+  <%= text_field_tag(:title) %><br>
+  <%= label_tag(:content, "content :") %>
+  <%= text_field_tag(:content) %><br>
+  <%= submit_tag("submit") %>
+<% end %>
+
+<!--
+    <%#= form_tag do %>
+      Form contents
+    <%# end %>
+    same with upper code
+    <form accept-charset="UTF-8" action="/" method="post">
+      <input name="utf8" type="hidden" value="&#x2713;" />
+      <input name="authenticity_token" type="hidden" value="J7CBxfHalt49OSHp27hblqK20c9PgwJ108nDHX/8Cts=" />
+      Form contents
+    </form>
+-->
+
 <a href="/">home</a>

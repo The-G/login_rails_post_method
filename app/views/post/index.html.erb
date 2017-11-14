@@ -1,13 +1,13 @@
 <h1>Post#index</h1>
 
-<% if session[:user_id] %>
+<!--<%# if session[:user_id] %>
     <a href="/post/new">작성하기</a><br>
     <a href="/user/index">모든 유저 확인</a><br>
     <a href="/user/logout">로그아웃</a><br>
-<% else %>
+<%# else %>
     <a href="/user/new">가입하기</a><br>
     <a href="/user/login">로그인</a><br>
-<% end %>
+<%# end %>-->
 
 <br>
 
@@ -15,11 +15,11 @@
 
 <br>
 
-<table>
+<table class="table">
     <th>글번호</th>
     <th>작성자</th>
     <th>제목</th>
-    <th>SHOW</th>
+    <!--<th>날짜</th>-->
     <th>MODIFY</th>
     <th>DESTROY</th>
     <tbody>
@@ -27,10 +27,12 @@
             <tr>
                 <td><%=post.id%></td>
                 <td><%=post.user.email%></td>
-                <td><%=post.title%></td>
-                <td><a href="/post/show/<%=post.id%>">show</a></td>
-                <td><a href="/post/modify/<%=post.id%>">modify</a></td>
-                <td><a href="/post/destroy/<%=post.id%>">destroy</a></td>
+                <!--<td><%#=post.created_at%></td>-->
+                <td><a href="/post/show/<%=post.id%>"><%=post.title%></a></td>
+                <% if session[:user_id] == post.user.id %>
+                    <td><a href="/post/modify/<%=post.id%>">modify</a></td>
+                    <td><a href="/post/destroy/<%=post.id%>">destroy</a></td>
+                <% end %>
             </tr>
         <%end%>
     </tbody>

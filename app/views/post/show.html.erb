@@ -5,11 +5,21 @@
 
 
 <div style="margin-top:20px">
-    <form action="/post/create_comment">
-        <input type="hidden" name="post_id" value="<%=@id%>" />
+    <!--
+    <form action="/post/create_comment" method="post">
+        <input type="hidden" name="post_id" value="<%#=@id%>" />
         <input type="text" name="comment" />
         <input type="submit" value="reply"/>
+        <input type="hidden" name="authenticity_token" value="<%#=form_authenticity_token()%>"/>
     </form>
+    -->
+    <%= form_tag("/post/create_comment", method: "post") do %>
+      <%= hidden_field_tag(:post_id, @id) %>
+      <%#= label_tag(:comment, "comment :") %>
+      <%= text_field_tag(:comment) %><br>
+      <%= submit_tag("reply") %>
+    <% end %>
+
 </div>
 
 <div style="margin-top:20px">

@@ -8,7 +8,7 @@ class UserController < ApplicationController
   end
 
   def create
-    email = params[:email]
+    email = params[:user[address]]
     password = params[:password]
     User.create(
       email: email,
@@ -25,7 +25,7 @@ class UserController < ApplicationController
   end
   
   def login
-    
+    flash[:notice] = 'Welcome!!'
   end
   
   def login_process
@@ -39,11 +39,11 @@ class UserController < ApplicationController
         flash[:notice] = 'success login'
         redirect_to '/'
       else
-        flash[:notice] = 'wrong password'
+        flash[:alert] = 'wrong password'
         redirect_to :back
       end
     else
-        flash[:notice] = 'wrong email'
+        flash[:alert] = 'wrong email'
       redirect_to :back
     end
 
